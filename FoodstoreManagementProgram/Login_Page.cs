@@ -48,7 +48,7 @@ namespace FoodstoreManagementProgram
                 f2.Show();
                 this.Hide();
             }
-            if (textBox1.Text == user_id && textBox2.Text == user_password)
+            else if (textBox1.Text == user_id && textBox2.Text == user_password)
             {
                 MessageBox.Show("[사용자] 로그인 되었습니다.", "로그인");
                 Program.ownerLogin = false;
@@ -56,6 +56,10 @@ namespace FoodstoreManagementProgram
                 f2.Tag = this;
                 f2.Show();
                 this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("아이디 혹은 비밀번호가 일치하지 않습니다.", "로그인");
             }
         }
 
