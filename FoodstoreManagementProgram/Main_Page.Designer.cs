@@ -170,7 +170,7 @@ namespace FoodstoreManagementProgram
             this.Controls.Add(this.button1);
             this.Name = "Main_Page";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "메인 관리 페이지";
+            this.Text = "음식점 관리 프로그램";
             this.Load += new System.EventHandler(this.Main_Page_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
