@@ -29,7 +29,6 @@ namespace FoodstoreManagementProgram
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,17 +46,10 @@ namespace FoodstoreManagementProgram
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 12);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(255, 426);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // button1
             // 
@@ -222,11 +214,22 @@ namespace FoodstoreManagementProgram
             this.label9.Text = "==================================================";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(259, 425);
+            this.dataGridView1.TabIndex = 21;
+            // 
             // Manage_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox5);
@@ -244,18 +247,16 @@ namespace FoodstoreManagementProgram
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.listView1);
             this.Name = "Manage_Menu";
             this.Text = "직원 정보 및 관리";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
@@ -273,5 +274,6 @@ namespace FoodstoreManagementProgram
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

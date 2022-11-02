@@ -89,15 +89,7 @@ namespace FoodstoreManagementProgram
 
         private void Login_Page_Load(object sender, EventArgs e)
         {
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            FirstSetting first = new FirstSetting();
-            first.Tag = this;
-            first.Show();
-            this.Hide();
-            linkLabel1.Visible = false;
+            
         }
     }
 }
