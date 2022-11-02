@@ -39,3 +39,7 @@ C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\ob
 C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\Debug\FoodstoreManagementProgram.csproj.CoreCompileInputs.cache
 C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\Debug\FoodstoreManagementProgram.exe
 C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\Debug\FoodstoreManagementProgram.pdb
+C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\bin\Debug\Oracle.DataAccess.dll
+C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\Debug\FoodstoreManagementProgram.Manage_Menu.resources
+C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\Debug\FoodstoreManagementProgram.csproj.CopyComplete
+C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\Debug\FoodstoreManagementProgram.Serial_Check_Page.resources

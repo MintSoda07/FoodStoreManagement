@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\Oracle.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,6 +61,12 @@
     </Compile>
     <Compile Include="Food_Page.Designer.cs">
       <DependentUpon>Food_Page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Serial_Check_Page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Serial_Check_Page.Designer.cs">
+      <DependentUpon>Serial_Check_Page.cs</DependentUpon>
     </Compile>
     <Compile Include="Manage_Menu.cs">
       <SubType>Form</SubType>
@@ -95,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Food_Page.resx">
       <DependentUpon>Food_Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Serial_Check_Page.resx">
+      <DependentUpon>Serial_Check_Page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Menu.resx">
       <DependentUpon>Manage_Menu.cs</DependentUpon>
