@@ -63,8 +63,8 @@ namespace FoodstoreManagementProgram
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Program.SERIAL=textBox1.Text;
             
-            Properties.Settings.Default.SERIAL_NO = textBox1.Text;
             FirstSetting first = new FirstSetting();
             first.Tag = this;
             first.Show();

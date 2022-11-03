@@ -12,16 +12,17 @@ namespace FoodstoreManagementProgram
 {
     static class Program
     {
+        public static bool ownerLogin = false;
+        public static String SERIAL;
         /// <summary>
         /// 해당 애플리케이션의 주 진입점입니다.
         /// </summary>
-        
+
 
         [STAThread]
         static void Main()
         {
             string path = @"C:\Users\USER\AppData\Roaming\FSM.json";
-            string Serial = "";
             try
             {
                 if (!File.Exists(path))
@@ -34,16 +35,39 @@ namespace FoodstoreManagementProgram
                     using (JsonTextReader reader = new JsonTextReader(file))
                     {
                         JObject json = (JObject)JToken.ReadFrom(reader);
-                        Serial = (string)json["SERIAL_CODE"].ToString();
+                        SERIAL = (string)json["SERIAL_CODE"].ToString();
                     }
                 }
-                if (Serial == null || Serial == "")
+                if (SERIAL == null || SERIAL == "")
                 {
                     Application.Run(new Serial_Check_Page());
                 }
                 else
                 {
-                    Application.Run(new Login_Page());
+                    String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
+                    string sqlQuery = "SELECT * FROM PROGRAM";
+
+                    OracleConnection Serial_check = new OracleConnection(connInfo);
+                    OracleCommand Serial_command = new OracleCommand();
+                    Serial_command.Connection = Serial_check;
+                    Serial_command.CommandText = sqlQuery; Serial_check.Open();
+                    OracleDataReader SerialReader;
+                    SerialReader = Serial_command.ExecuteReader();
+                    Boolean SERIAL_FOUND = false;
+                    while (SerialReader.Read())
+                    {
+                        if (SERIAL == SerialReader.GetString(0))
+                        {
+                            SERIAL_FOUND = true;
+                            Application.Run(new Login_Page());
+                        }
+                    }
+                    if (!SERIAL_FOUND)
+                    {
+                        Application.Run(new Serial_Check_Page());
+                    }
+                    
+
                 }
             }catch(Exception e)
             {
@@ -52,6 +76,6 @@ namespace FoodstoreManagementProgram
             
             
         }
-        public static bool ownerLogin = false;
+        
     }
 }

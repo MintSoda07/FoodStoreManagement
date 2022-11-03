@@ -68,6 +68,7 @@ namespace FoodstoreManagementProgram
             this.button2.TabIndex = 2;
             this.button2.Text = "돌아가기";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -249,6 +250,7 @@ namespace FoodstoreManagementProgram
             this.Controls.Add(this.button1);
             this.Name = "Manage_Menu";
             this.Text = "직원 정보 및 관리";
+            this.Load += new System.EventHandler(this.Manage_Menu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

@@ -41,6 +41,18 @@ namespace FoodstoreManagementProgram
                 LoginInfo.Rows.Add(newRow); DBAdapter.Update(DS, "LOGIN_DATA");
                     
                 MessageBox.Show("관리자 아이디:" + textBox3.Text + "\n관리자 패스워드:" + textBox4.Text + "\n설정이 완료되었습니다.", "알림");
+                JObject data = new JObject(
+                new JProperty("IP", textBox1.Text),
+                new JProperty("PORT", textBox2.Text),
+                new JProperty("SERIAL_CODE",Program.SERIAL )
+                );
+
+            File.WriteAllText(@"C:\Users\USER\AppData\Roaming\FSM.json", data.ToString());
+
+                Login_Page f1 = new Login_Page();
+                f1.Tag = this;
+                f1.Show();
+                this.Hide();
             }
             catch (Exception Oracle_error)
             {
@@ -49,10 +61,7 @@ namespace FoodstoreManagementProgram
             }
             
             
-            Login_Page f1 = new Login_Page();
-            f1.Tag = this;
-            f1.Show();
-            this.Hide();
+            
         }
 
         private void FirstSetting_Load(object sender, EventArgs e)
