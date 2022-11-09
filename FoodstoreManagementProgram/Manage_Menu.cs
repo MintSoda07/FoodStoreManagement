@@ -33,9 +33,8 @@ namespace FoodstoreManagementProgram
 
         private void Manage_Menu_Load(object sender, EventArgs e)
         {
-            // 직원 데이터베이스 추가 예정
-           /* String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
-            string sqlQuery = "SELECT * FROM CLIENT WHERE WORKPLACE=("+Program.SERIAL+");";
+            String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
+            string sqlQuery = "SELECT * FROM CLIENT WHERE WORKPLACE=" + Program.SERIAL;
 
             OracleConnection login_attempt = new OracleConnection(connInfo);
             OracleCommand loginCommand = new OracleCommand();
@@ -45,12 +44,33 @@ namespace FoodstoreManagementProgram
             loginReader = loginCommand.ExecuteReader();
             while (loginReader.Read())
             {
-                label1.Text = loginReader.GetString(1);
-                label2.Text = loginReader.GetString(3);
-                label3.Text = loginReader.GetString(2);
-                label4.Text = loginReader.GetString(4);
-                label5.Text = loginReader.GetString(5);
-            }*/
+                ListViewItem ivt=new ListViewItem();
+                ivt.SubItems.Add(loginReader.GetString(1));
+                ivt.SubItems.Add(loginReader.GetString(2));
+                ivt.SubItems.Add(loginReader.GetDateTime(3).ToString());
+                ivt.SubItems.Add(loginReader.GetString(0).ToString());
+                listView1.Items.Add(ivt);
+            }
+        }
+
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+           /*  ivt = e.Column;
+            String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
+            string sqlQuery = "SELECT * FROM CLIENT WHERE CLEINT_NO=" + e.SubItems.;
+
+            OracleConnection login_attempt = new OracleConnection(connInfo);
+            OracleCommand loginCommand = new OracleCommand();
+            loginCommand.Connection = login_attempt;
+            loginCommand.CommandText = sqlQuery; login_attempt.Open();
+            OracleDataReader loginReader;
+            loginReader = loginCommand.ExecuteReader();
+            label1.Text=*/
         }
     }
 }
