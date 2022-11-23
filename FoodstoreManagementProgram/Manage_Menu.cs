@@ -35,42 +35,39 @@ namespace FoodstoreManagementProgram
         {
             String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
             string sqlQuery = "SELECT * FROM CLIENT WHERE WORKPLACE=" + Program.SERIAL;
-
+            
             OracleConnection login_attempt = new OracleConnection(connInfo);
             OracleCommand loginCommand = new OracleCommand();
             loginCommand.Connection = login_attempt;
             loginCommand.CommandText = sqlQuery; login_attempt.Open();
             OracleDataReader loginReader;
             loginReader = loginCommand.ExecuteReader();
+
+            OracleDataAdapter oda = new OracleDataAdapter();
+            oda.SelectCommand = new OracleCommand(sqlQuery);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("성명", typeof(string));
+            dt.Columns.Add("직급", typeof(string));
+            dt.Columns.Add("입사일", typeof(string));
+            dt.Columns.Add("직원코드", typeof(string));
+            dt.Columns.Add("나이", typeof(string));
+            dt.Columns.Add("생년월일", typeof(string));
+            dt.Columns.Add("성별", typeof(string));
+            dt.Columns.Add("급여", typeof(string));
+            dt.Columns.Add("상세정보", typeof(string));
+            dt.Columns.Add("사진 경로", typeof(string));
             while (loginReader.Read())
             {
-                ListViewItem ivt=new ListViewItem();
-                ivt.SubItems.Add(loginReader.GetString(1));
-                ivt.SubItems.Add(loginReader.GetString(2));
-                ivt.SubItems.Add(loginReader.GetDateTime(3).ToString());
-                ivt.SubItems.Add(loginReader.GetString(0).ToString());
-                listView1.Items.Add(ivt);
+                dt.Rows.Add(loginReader.GetString(1), loginReader.GetString(2), loginReader.GetDateTime(3), loginReader.GetInt64(0),loginReader.GetInt64(4), loginReader.GetDateTime(5), loginReader.GetString(6), loginReader.GetInt64(7), loginReader.GetString(8));
             }
+            login_attempt.Close();
+            dataGridView1.DataSource = dt;
+            dataGridView1.SelectionMode =  DataGridViewSelectionMode.FullRowSelect;
         }
 
-        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }
-
-        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-           /*  ivt = e.Column;
-            String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
-            string sqlQuery = "SELECT * FROM CLIENT WHERE CLEINT_NO=" + e.SubItems.;
-
-            OracleConnection login_attempt = new OracleConnection(connInfo);
-            OracleCommand loginCommand = new OracleCommand();
-            loginCommand.Connection = login_attempt;
-            loginCommand.CommandText = sqlQuery; login_attempt.Open();
-            OracleDataReader loginReader;
-            loginReader = loginCommand.ExecuteReader();
-            label1.Text=*/
         }
     }
 }
