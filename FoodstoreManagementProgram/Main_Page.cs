@@ -70,5 +70,13 @@ namespace FoodstoreManagementProgram
             mp.Show();
             this.Hide();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            sales_management mm = new sales_management();
+            mm.Tag = this;
+            mm.Show();
+            this.Hide();
+        }
     }
 }
