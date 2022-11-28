@@ -485,6 +485,7 @@ namespace FoodstoreManagementProgram
             this.button40.TabIndex = 7;
             this.button40.Text = "배달/전화주문 입력";
             this.button40.UseVisualStyleBackColor = true;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
             // 
             // label1
             // 
