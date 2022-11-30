@@ -27,7 +27,7 @@ namespace FoodstoreManagementProgram
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            DateTime nowDate = DateTime.Now;
+            
           
         }
 
