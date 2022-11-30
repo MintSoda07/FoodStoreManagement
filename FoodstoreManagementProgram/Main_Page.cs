@@ -78,13 +78,5 @@ namespace FoodstoreManagementProgram
             mm.Show();
             this.Hide();
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            recipe re = new recipe();
-            re.Tag = this;
-            re.Show();
-            this.Hide();
-        }
     }
 }

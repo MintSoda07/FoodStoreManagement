@@ -90,11 +90,6 @@
     </Compile>
     <Compile Include="order_addPage.Designer.cs">
       <DependentUpon>order_addPage.cs</DependentUpon>
-    <Compile Include="recipe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="recipe.Designer.cs">
-      <DependentUpon>recipe.cs</DependentUpon>
     </Compile>
     <Compile Include="sales_management.cs">
       <SubType>Form</SubType>
@@ -148,8 +143,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="order_addPage.resx">
       <DependentUpon>order_addPage.cs</DependentUpon>
-    <EmbeddedResource Include="recipe.resx">
-      <DependentUpon>recipe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sales_management.resx">
       <DependentUpon>sales_management.cs</DependentUpon>
