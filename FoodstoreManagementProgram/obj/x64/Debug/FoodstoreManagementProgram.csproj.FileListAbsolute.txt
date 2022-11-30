@@ -21,3 +21,4 @@ C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\ob
 C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.csprojAssemblyReference.cache
 C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.sales_management.resources
 C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.order_addPage.resources
+C:\Users\USER\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.recipe.resources
