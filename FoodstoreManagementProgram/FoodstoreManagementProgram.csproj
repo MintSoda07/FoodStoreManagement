@@ -85,6 +85,12 @@
     <Compile Include="Food_Page.Designer.cs">
       <DependentUpon>Food_Page.cs</DependentUpon>
     </Compile>
+    <Compile Include="order_addPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="order_addPage.Designer.cs">
+      <DependentUpon>order_addPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="sales_management.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Food_Page.resx">
       <DependentUpon>Food_Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="order_addPage.resx">
+      <DependentUpon>order_addPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sales_management.resx">
       <DependentUpon>sales_management.cs</DependentUpon>
