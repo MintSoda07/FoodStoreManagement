@@ -65,6 +65,7 @@ namespace FoodstoreManagementProgram
             this.button1.TabIndex = 0;
             this.button1.Text = "주문 등록";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -123,6 +124,7 @@ namespace FoodstoreManagementProgram
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(136, 43);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(481, 326);
@@ -255,7 +257,7 @@ namespace FoodstoreManagementProgram
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label9.Font = new System.Drawing.Font("한컴 고딕", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(1152, 322);
+            this.label9.Location = new System.Drawing.Point(1150, 322);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(49, 42);
             this.label9.TabIndex = 21;
@@ -283,6 +285,7 @@ namespace FoodstoreManagementProgram
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(843, 43);
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(357, 219);
             this.listView1.TabIndex = 22;
@@ -301,7 +304,7 @@ namespace FoodstoreManagementProgram
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "가격";
+            this.columnHeader3.Text = "값";
             this.columnHeader3.Width = 170;
             // 
             // order_addPage

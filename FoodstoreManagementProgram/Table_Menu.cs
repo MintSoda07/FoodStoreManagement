@@ -45,21 +45,23 @@ namespace FoodstoreManagementProgram
             dt.Columns.Add("주문일자", typeof(DateTime));
             dt.Columns.Add("배달 여부", typeof(string));
             dt.Columns.Add("주소", typeof(string));
+            dt.Columns.Add("테이블 번호", typeof(string));
             while (loginReader.Read())
             {
-                dt.Rows.Add(loginReader.GetDecimal(0), loginReader.GetDateTime(1), loginReader.GetString(2), loginReader.GetString(3));
+                String val = "X";
+                if (loginReader.GetString(3) != "0")
+                {
+                    val = loginReader.GetString(3);
+                }
+                dt.Rows.Add(loginReader.GetDecimal(0), loginReader.GetDateTime(1), loginReader.GetString(2), loginReader.GetString(5), val);
             }
+            
             login_attempt.Close();
             dataGridView1.DataSource = dt;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -80,7 +82,8 @@ namespace FoodstoreManagementProgram
         {
             order_addPage mp = new order_addPage();
             mp.Tag = this;
-            mp.ShowDialog();
+            mp.Show();
+            this.Hide();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -88,7 +91,6 @@ namespace FoodstoreManagementProgram
             String data=dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
             string sqlQuery = "SELECT A.MENU_NAME,A.AMOUNT,A.ORDER_CODE,B.PRICE,C.ORDER_TYPE FROM MENU_ORDER A JOIN MENU B ON A.MENU_NAME=B.MENU_NAME JOIN MENU_ORDER_INTERGRATE C ON A.ORDER_CODE=C.ORDER_CODE WHERE  A.ORDER_CODE='" + data+"'";
-
             OracleConnection login_attempt = new OracleConnection(connInfo);
             OracleCommand loginCommand = new OracleCommand();
             loginCommand.Connection = login_attempt;

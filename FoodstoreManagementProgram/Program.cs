@@ -22,6 +22,7 @@ namespace FoodstoreManagementProgram
         [STAThread]
         static void Main()
         {
+            Application.Run(new Table_Menu());
             string path = @"C:\Users\USER\AppData\Roaming\FSM.json";
             try
             {
@@ -71,7 +72,7 @@ namespace FoodstoreManagementProgram
                 }
             }catch(Exception e)
             {
-                Application.Run(new Serial_Check_Page());
+                MessageBox.Show("예상치 못한 오류가 발생했습니다.");
             }
             
             

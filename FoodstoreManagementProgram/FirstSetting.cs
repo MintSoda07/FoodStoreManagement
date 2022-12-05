@@ -63,10 +63,5 @@ namespace FoodstoreManagementProgram
             
             
         }
-
-        private void FirstSetting_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

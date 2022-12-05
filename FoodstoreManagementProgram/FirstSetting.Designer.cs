@@ -184,7 +184,6 @@ namespace FoodstoreManagementProgram
             this.Name = "FirstSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "초기 환경설정";
-            this.Load += new System.EventHandler(this.FirstSetting_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
