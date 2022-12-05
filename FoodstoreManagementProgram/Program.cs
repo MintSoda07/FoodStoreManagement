@@ -22,7 +22,6 @@ namespace FoodstoreManagementProgram
         [STAThread]
         static void Main()
         {
-            Application.Run(new Table_Menu());
             string path = @"C:\Users\USER\AppData\Roaming\FSM.json";
             try
             {
