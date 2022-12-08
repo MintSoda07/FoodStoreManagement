@@ -87,7 +87,6 @@ namespace FoodstoreManagementProgram
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(190, 21);
             this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "admin";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
@@ -114,7 +113,6 @@ namespace FoodstoreManagementProgram
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(190, 21);
             this.textBox4.TabIndex = 7;
-            this.textBox4.Text = "1234";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button1
@@ -142,7 +140,6 @@ namespace FoodstoreManagementProgram
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(190, 21);
             this.textBox5.TabIndex = 10;
-            this.textBox5.Text = "상호명을 입력해주세요";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
@@ -160,7 +157,6 @@ namespace FoodstoreManagementProgram
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(190, 21);
             this.textBox6.TabIndex = 12;
-            this.textBox6.Text = "0~36의 좌석 수를 입력해주세요";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FirstSetting
@@ -184,6 +180,7 @@ namespace FoodstoreManagementProgram
             this.Name = "FirstSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "초기 환경설정";
+            this.Load += new System.EventHandler(this.FirstSetting_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

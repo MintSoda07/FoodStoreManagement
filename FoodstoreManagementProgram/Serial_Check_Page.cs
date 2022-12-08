@@ -63,12 +63,39 @@ namespace FoodstoreManagementProgram
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Program.SERIAL=textBox1.Text;
-            
-            FirstSetting first = new FirstSetting();
-            first.Tag = this;
-            first.Show();
-            this.Hide();
+            Program.SERIAL = textBox1.Text;
+
+            String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
+            string sqlQuery = "SELECT WCODE FROM LOGIN_DATA WHERE ACESS_LEVEL='ADMIN'";
+
+            OracleConnection login_attempt = new OracleConnection(connInfo);
+            OracleCommand loginCommand = new OracleCommand();
+            loginCommand.Connection = login_attempt;
+            loginCommand.CommandText = sqlQuery; login_attempt.Open();
+            OracleDataReader loginReader;
+            loginReader = loginCommand.ExecuteReader();
+            Boolean ID_FOUND = false;
+            while (loginReader.Read())
+            {
+                if (loginReader.GetString(0) == Program.SERIAL)
+                {
+                    MessageBox.Show("관리자 계정이 존재합니다. 로그인 화면으로 이동합니다.");
+                    ID_FOUND = true;
+                    Login_Page first = new Login_Page();
+                    first.Tag = this;
+                    first.Show();
+                    this.Hide();
+                    break;
+                }
+            }
+            if (ID_FOUND == false)
+            {
+                MessageBox.Show("관리자 계정이 존재하지 않습니다. 처음 설정으로 이동합니다.");
+                FirstSetting first = new FirstSetting();
+                first.Tag = this;
+                first.Show();
+                this.Hide();
+            }   
         }
     }
 }
