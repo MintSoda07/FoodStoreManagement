@@ -112,10 +112,12 @@ namespace FoodstoreManagementProgram
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.KeyPreview = true;
             this.Name = "Serial_Check_Page";
             this.Text = "시리얼 넘버 입력";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Serial_Check_Page_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Serial_Check_Page_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

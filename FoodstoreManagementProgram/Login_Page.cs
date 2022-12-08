@@ -89,7 +89,15 @@ namespace FoodstoreManagementProgram
 
         private void Login_Page_Load(object sender, EventArgs e)
         {
-            
+            textBox1.Focus();
+        }
+
+        private void Login_Page_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(sender, e);
+            }
         }
     }
 }

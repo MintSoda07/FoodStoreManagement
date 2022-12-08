@@ -31,11 +31,11 @@ namespace FoodstoreManagementProgram
         {
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -63,6 +63,21 @@ namespace FoodstoreManagementProgram
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "메뉴";
+            this.columnHeader1.Width = 200;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "개수";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "가격";
+            this.columnHeader3.Width = 100;
             // 
             // label2
             // 
@@ -83,20 +98,6 @@ namespace FoodstoreManagementProgram
             this.button1.Text = "결제";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "메뉴";
-            this.columnHeader1.Width = 200;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "개수";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "가격";
-            this.columnHeader3.Width = 100;
-            // 
             // Table_Clicked
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -108,6 +109,7 @@ namespace FoodstoreManagementProgram
             this.Controls.Add(this.label1);
             this.Name = "Table_Clicked";
             this.Text = "테이블 관리";
+            this.Load += new System.EventHandler(this.Table_Clicked_Load);
             this.ResumeLayout(false);
 
         }

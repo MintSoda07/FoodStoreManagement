@@ -44,7 +44,7 @@ namespace FoodstoreManagementProgram
                     else
                     {
                         String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
-                        string sqlQuery = "SELECT * FROM PROGRAM";
+                        string sqlQuery = "SELECT STORE_CODE FROM FOODSTORE";
 
                         OracleConnection Serial_check = new OracleConnection(connInfo);
                         OracleCommand Serial_command = new OracleCommand();

@@ -117,24 +117,46 @@ namespace FoodstoreManagementProgram
             textBox6.Text = summary + "";
         }
 
+        public String type = "배달주문";
+        public int table_num = 0;
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+                    int val = Int32.Parse(textBox8.Text);
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show("테이블 수에 올바른 값을 입력해야 합니다.");
+                textBox8.Focus();
+            }
             try
             {
                 if (listView1.Items.Count==0)
                 {
                     MessageBox.Show("선택한 메뉴가 존재하지 않습니다.");
-                }else if (textBox1.Text == "") {
+                }else if (textBox1.Text == ""&&radioButton1.Checked) {
                     MessageBox.Show("주소를 입력해야 합니다.");
                     textBox1.Focus();
                 }
                 else
                 {
                     DateTime myDateTime = DateTime.Now;
+                    string str_table = textBox8.Text;
                     String sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss");
-
+                    String address = "테이블주문";
                     String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
-                    String sql_insert = "INSERT INTO MENU_ORDER_INTERGRATE VALUES(ORDER_CODE_SEQ.NEXTVAL,TO_DATE('" + sqlFormattedDate + "','YYYY-MM-DD HH:MI:SS'),'배달','0','" + Program.SERIAL + "','" + textBox1.Text + "')";
+                    if (type == "배달주문")
+                    {
+                        address = textBox1.Text;
+                        str_table = "X";
+                    }
+                    String more_info = "없음";
+                    if (textBox7.Text != null || textBox7.Text != "")
+                    {
+                        more_info = textBox7.Text;
+                    }
+                    String sql_insert = "INSERT INTO MENU_ORDER_INTERGRATE VALUES(ORDER_CODE_SEQ.NEXTVAL,TO_DATE('" + sqlFormattedDate + "','YYYY-MM-DD HH24:MI:SS'),'"+type+"','"+ str_table + "','" + Program.SERIAL + "','" + address + "','"+ more_info+ "')";
                     OracleConnection Order_Conn = new OracleConnection(connInfo);
                     Order_Conn.Open();
                     OracleCommand Order_Cmd = new OracleCommand();
@@ -146,7 +168,7 @@ namespace FoodstoreManagementProgram
                     foreach (ListViewItem item in listView1.Items)
                     {
                         Order_Cmd2.Connection = Order_Conn;
-                        Order_Cmd2.CommandText = "INSERT INTO MENU_ORDER VALUES('" + item.SubItems[0].Text + "','" + item.SubItems[1].Text + "',ORDER_CODE_SEQ.CURRVAL,TO_DATE('" + sqlFormattedDate + "','YYYY-MM-DD HH:MI:SS'))";
+                        Order_Cmd2.CommandText = "INSERT INTO MENU_ORDER VALUES('" + item.SubItems[0].Text + "','" + item.SubItems[1].Text + "',ORDER_CODE_SEQ.CURRVAL,TO_DATE('" + sqlFormattedDate + "','YYYY-MM-DD HH24:MI:SS'))";
                         Order_Cmd2.ExecuteNonQuery();
                     }
                     Order_Conn.Close();
@@ -160,8 +182,59 @@ namespace FoodstoreManagementProgram
             }
             catch (Exception error)
             {
-                MessageBox.Show("연결에 실패했습니다. 다음에 다시 시도해 주세요.");
+                MessageBox.Show("연결에 실패했습니다. 다음에 다시 시도해 주세요."+error);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            label12.Text = "테이블";
+            textBox1.ReadOnly = true;
+            textBox8.ReadOnly = false;
+            type = "테이블주문";
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            label12.Text = "배달";
+            textBox1.ReadOnly = false;
+            textBox8.ReadOnly = true;
+            type = "배달주문";
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox8.Text != null)
+                {
+                    int val = Int32.Parse(textBox8.Text);
+                    if (val < 1 || val > 36)
+                    {
+                        MessageBox.Show("테이블 수는 1~36까지만 가능합니다.");
+                        textBox8.Text = 1 + "";
+                    }
+                }
+                
+            }catch(Exception er)
+            {
+            }
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
