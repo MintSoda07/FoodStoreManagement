@@ -38,7 +38,8 @@ namespace FoodstoreManagementProgram
                 OracleConnection login_attempt = new OracleConnection(connInfo);
                 OracleCommand loginCommand = new OracleCommand();
                 loginCommand.Connection = login_attempt;
-                loginCommand.CommandText = sqlQuery; login_attempt.Open();
+                loginCommand.CommandText = sqlQuery;
+                login_attempt.Open();
                 loginCommand.ExecuteNonQuery();
                 login_attempt.Close();
                 MessageBox.Show("메뉴를 추가했습니다");
