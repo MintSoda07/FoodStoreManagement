@@ -20,44 +20,26 @@ namespace FoodstoreManagementProgram
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            recipe re = new recipe();
+            re.Tag = this;
+            re.Show();
+            this.Hide();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
-            if (listView1.SelectedItems.Count <= 0)
+            String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
+            string sqlQuery =  "DELETE RECIPE FROM WHERE MENU_NAME";
+            if(listView1.SelectedItems == null)
             {
-                MessageBox.Show("선택된 레시피가 없습니다.");
+                MessageBox.Show("메뉴를 선택해주세요");
             }
-            else
+            int summary = 0;
+            listView1.SelectedItems[0].Remove();
+            foreach (ListViewItem item in listView1.Items)
             {
-                String data = listView1.SelectedItems[0].Text;
-                String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
-                string sqlQuery = "DELETE FROM RECIPE WHERE MENU_NAME='" + data + "'";
-                OracleConnection login_attempt = new OracleConnection(connInfo);
-                OracleCommand loginCommand = new OracleCommand();
-                loginCommand.Connection = login_attempt;
-                loginCommand.CommandText = sqlQuery;
-                login_attempt.Open();
-
-
-
-                OracleDataAdapter oda = new OracleDataAdapter();
-                oda.SelectCommand = new OracleCommand(sqlQuery);
-                if (MessageBox.Show("선택하신 레시피가 삭제 됩니다", "레시피 삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    if (listView1.SelectedItems.Count > 0)
-                    {
-                        int index = listView1.FocusedItem.Index;
-                        listView1.Items.RemoveAt(index);
-                        loginCommand.ExecuteNonQuery();
-                    }
-
-                }
-                login_attempt.Close();
+                summary += Int32.Parse(item.SubItems[2].Text);
             }
-            
         }
 
         private void recipe_remove_Load(object sender, EventArgs e)
@@ -68,8 +50,7 @@ namespace FoodstoreManagementProgram
             OracleConnection login_attempt = new OracleConnection(connInfo);
             OracleCommand loginCommand = new OracleCommand();
             loginCommand.Connection = login_attempt;
-            loginCommand.CommandText = sqlQuery;
-            login_attempt.Open();
+            loginCommand.CommandText = sqlQuery; login_attempt.Open();
             OracleDataReader loginReader;
             loginReader = loginCommand.ExecuteReader();
 
