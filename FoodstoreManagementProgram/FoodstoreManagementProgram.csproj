@@ -91,6 +91,24 @@
     <Compile Include="order_addPage.Designer.cs">
       <DependentUpon>order_addPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="recipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="recipe.Designer.cs">
+      <DependentUpon>recipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="recipe_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="recipe_add.Designer.cs">
+      <DependentUpon>recipe_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="recipe_remove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="recipe_remove.Designer.cs">
+      <DependentUpon>recipe_remove.cs</DependentUpon>
+    </Compile>
     <Compile Include="sales_management.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +161,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="order_addPage.resx">
       <DependentUpon>order_addPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="recipe.resx">
+      <DependentUpon>recipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="recipe_add.resx">
+      <DependentUpon>recipe_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="recipe_remove.resx">
+      <DependentUpon>recipe_remove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sales_management.resx">
       <DependentUpon>sales_management.cs</DependentUpon>

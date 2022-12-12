@@ -30,12 +30,12 @@ namespace FoodstoreManagementProgram
             OracleDataAdapter oda = new OracleDataAdapter();
             oda.SelectCommand = new OracleCommand(sqlQuery);
             DataTable dt = new DataTable();
-            DateTime order_date =null;
+            DateTime order_date;
             int order_CODE = 0;
             string info = "ERROR";
             while (loginReader.Read())
             {
-                order_date = loginReader.GetDateTime(0).ToString();
+                order_date = loginReader.GetDateTime(0);
                 order_CODE = loginReader.GetInt32(1);
                 info = loginReader.GetString(2);
             }
