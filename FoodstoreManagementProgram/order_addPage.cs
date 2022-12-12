@@ -13,9 +13,11 @@ namespace FoodstoreManagementProgram
 {
     public partial class order_addPage : Form
     {
-        public order_addPage()
+        public Table_Menu Parent_Page;
+        public order_addPage(Table_Menu Form2)
         {
             InitializeComponent();
+            Parent_Page = Form2;
         }
 
         private void order_addPage_Load(object sender, EventArgs e)
@@ -173,10 +175,12 @@ namespace FoodstoreManagementProgram
                     }
                     Order_Conn.Close();
                     MessageBox.Show("주문이 완료되었습니다.");
+                    Parent_Page.Close();
+                    this.Close();
                     Table_Menu mp = new Table_Menu();
                     mp.Tag = this;
                     mp.Show();
-                    this.Hide();
+
                 }
 
             }

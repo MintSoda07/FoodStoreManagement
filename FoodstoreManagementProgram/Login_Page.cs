@@ -89,7 +89,6 @@ namespace FoodstoreManagementProgram
 
         private void Login_Page_Load(object sender, EventArgs e)
         {
-            textBox1.Focus();
         }
 
         private void Login_Page_KeyDown(object sender, KeyEventArgs e)
@@ -98,6 +97,12 @@ namespace FoodstoreManagementProgram
             {
                 button1_Click(sender, e);
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            textBox1.Focus();
+            timer1.Enabled = false;
         }
     }
 }

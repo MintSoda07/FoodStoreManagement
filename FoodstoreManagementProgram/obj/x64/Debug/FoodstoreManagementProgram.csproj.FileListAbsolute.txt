@@ -34,7 +34,6 @@ C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\ob
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.Table_Menu.resources
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.csproj.GenerateResource.cache
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.csproj.CoreCompileInputs.cache
-C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.csproj.AssemblyReference.cache
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.recipe.resources
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.recipe_add.resources
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.recipe_remove.resources
@@ -47,3 +46,4 @@ C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\bi
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.exe
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.pdb
+C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.csproj.AssemblyReference.cache

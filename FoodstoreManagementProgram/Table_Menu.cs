@@ -30,6 +30,34 @@ namespace FoodstoreManagementProgram
             }
             for (int j = 36; j > 0; j--)
             {
+                String connInfo2 = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
+                string sqlQuery2 = "SELECT ORDER_DATE,ORDER_CODE FROM MENU_ORDER_INTERGRATE WHERE ORDER_TABLE='"+j + "'";
+
+                OracleConnection table_data_conn = new OracleConnection(connInfo2);
+                OracleCommand table_data_command = new OracleCommand();
+                table_data_command.Connection = table_data_conn;
+                table_data_command.CommandText = sqlQuery2; table_data_conn.Open();
+                OracleDataReader table_data_reader;
+                table_data_reader = table_data_command.ExecuteReader();
+
+                OracleDataAdapter oda2 = new OracleDataAdapter();
+                oda2.SelectCommand = new OracleCommand(sqlQuery2);
+                while (table_data_reader.Read())
+                {
+                    try
+                    {
+                        if ((int)table_data_reader.GetDecimal(1)>0)
+                        {
+                            groupBox1.Controls[36 - j].BackColor = Color.Wheat;
+                        }
+                    }
+                    catch(Exception allErr)
+                    {
+                    }
+                    
+
+                }
+                table_data_conn.Close();
                 groupBox1.Controls[36-j].Text = j+"";
             }
             String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
@@ -68,7 +96,6 @@ namespace FoodstoreManagementProgram
 
         private void groupBox2_Enter(object sender, EventArgs e)
         {
-
         }
 
         private void button39_Click(object sender, EventArgs e)
@@ -85,7 +112,7 @@ namespace FoodstoreManagementProgram
 
         private void button40_Click(object sender, EventArgs e)
         {
-            order_addPage mp = new order_addPage();
+            order_addPage mp = new order_addPage(this);
             mp.Tag = this;
             mp.ShowDialog();
         }
@@ -95,7 +122,7 @@ namespace FoodstoreManagementProgram
 
             String data=dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
-            string sqlQuery = "SELECT A.MENU_NAME,A.AMOUNT,A.ORDER_CODE,B.PRICE,C.ORDER_TYPE FROM MENU_ORDER A JOIN MENU B ON A.MENU_NAME=B.MENU_NAME JOIN MENU_ORDER_INTERGRATE C ON A.ORDER_CODE=C.ORDER_CODE WHERE  A.ORDER_CODE='" + data+"'";
+            string sqlQuery = "SELECT A.MENU_NAME,A.AMOUNT,A.ORDER_CODE,B.PRICE,C.ORDER_TYPE,C.ORDER_DATE,C.INFO,C.MORE_INFO,ORDER_TABLE FROM MENU_ORDER A JOIN MENU B ON A.MENU_NAME=B.MENU_NAME JOIN MENU_ORDER_INTERGRATE C ON A.ORDER_CODE=C.ORDER_CODE WHERE  A.ORDER_CODE='" + data+"'";
             OracleConnection login_attempt = new OracleConnection(connInfo);
             OracleCommand loginCommand = new OracleCommand();
             loginCommand.Connection = login_attempt;
@@ -116,16 +143,21 @@ namespace FoodstoreManagementProgram
             {
                 int item_sum = (int)(loginReader.GetDecimal(3) * loginReader.GetDecimal(1));
                 dat.Rows.Add(loginReader.GetDecimal(2), loginReader.GetString(0),loginReader.GetDecimal(3).ToString()+"\\",loginReader.GetDecimal(1), item_sum.ToString() + "\\");
-                if (loginReader.GetString(4).Equals("매장"))
+                textBox1.Text = loginReader.GetDateTime(5).ToString();
+                textBox3.Text = loginReader.GetString(7);
+                if (loginReader.GetString(4).Equals("테이블주문"))
                 {
                     radioButton1.Checked = true;
                     radioButton2.Checked = false;
+                    textBox2.Text = loginReader.GetString(8);
                 }
                 else
                 {
                     radioButton1.Checked = false;
                     radioButton2.Checked = true;
-                }summary += item_sum;
+                    textBox2.Text = loginReader.GetString(6);
+                }
+                summary += item_sum;
                 
             }
             Label_totalCash.Text = "총 가격 :    " + summary.ToString() + "  \\";
@@ -138,6 +170,7 @@ namespace FoodstoreManagementProgram
         {
             Button click_btn = (Button)sender;
             Table_Clicked form2 = new Table_Clicked(Int32.Parse(click_btn.Text));
+            form2.ShowDialog();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -166,6 +199,8 @@ namespace FoodstoreManagementProgram
                     Order_Cmd2.ExecuteNonQuery();
                     MessageBox.Show("[주문코드:"+data+"] 를 취소하였습니다.");
                     dt.Rows.RemoveAt(dataGridView1.CurrentCell.RowIndex);
+                    force_refresh();
+                    this.Update();
                 }
                 catch (Exception errrr)
                 {
@@ -221,6 +256,7 @@ namespace FoodstoreManagementProgram
                     Order_Cmd2.ExecuteNonQuery();
                     MessageBox.Show("[주문코드:" + data + "] 가 완료되었습니다.");
                     dt.Rows.RemoveAt(dataGridView1.CurrentCell.RowIndex);
+                    force_refresh();
                 }
                 catch (Exception errrr)
                 {
@@ -229,5 +265,13 @@ namespace FoodstoreManagementProgram
                 }
             }
         }
+        public void force_refresh()
+        {
+            this.Close();
+            Table_Menu mp = new Table_Menu();
+            mp.Tag = this;
+            mp.Show();
+        }
+       
     }
 }
