@@ -13,13 +13,14 @@ namespace FoodstoreManagementProgram
 {
     public partial class Food_Page : Form
     {
+        String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
         public Food_Page()
         {
             InitializeComponent();
         }
         private void Food_Page_Load(object sender, EventArgs e)
         {
-            String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
+            
             string sqlQuery = "SELECT * FROM REQUEST_ORDER";
             OracleConnection login_attempt = new OracleConnection(connInfo);
             OracleCommand loginCommand = new OracleCommand();
@@ -36,11 +37,12 @@ namespace FoodstoreManagementProgram
             dt.Columns.Add("공급업체 이름", typeof(string));
             dt.Columns.Add("입고일", typeof(string));
             dt.Columns.Add("가격", typeof(string));
-            dt.Columns.Add("재고량", typeof(string));
+            dt.Columns.Add("주문량", typeof(string));
             dt.Columns.Add("유통기한", typeof(string));
             while (loginReader.Read())
             {
                 dt.Rows.Add(loginReader.GetString(0), loginReader.GetString(1), loginReader.GetDateTime(2), loginReader.GetDecimal(3).ToString(), loginReader.GetDecimal(4).ToString(), loginReader.GetDateTime(5));
+
             }
             login_attempt.Close();
             dataGridView1.DataSource = dt;
@@ -58,7 +60,7 @@ namespace FoodstoreManagementProgram
             loginReader1 = loginCommand1.ExecuteReader();
 
             OracleDataAdapter oda1 = new OracleDataAdapter();
-            oda.SelectCommand = new OracleCommand(sqlQuery1);
+            oda1.SelectCommand = new OracleCommand(sqlQuery1);
             DataTable dt1 = new DataTable();
             dt1.Columns.Add("음식 이름", typeof(string));
             dt1.Columns.Add("재고량", typeof(string));
@@ -83,7 +85,7 @@ namespace FoodstoreManagementProgram
             loginReader2 = loginComman2.ExecuteReader();
 
             OracleDataAdapter oda2 = new OracleDataAdapter();
-            oda.SelectCommand = new OracleCommand(sqlQuery2);
+            oda2.SelectCommand = new OracleCommand(sqlQuery2);
             DataTable dt2 = new DataTable();
             dt2.Columns.Add("공급업체 이름", typeof(string));
             dt2.Columns.Add("상세정보", typeof(string));
@@ -102,6 +104,92 @@ namespace FoodstoreManagementProgram
             foodPage.Tag = this;
             foodPage.Show();
             this.Hide();
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            string sqlQuery1 = "SELECT * FROM FOOD WHERE FAMOUNT<=4";
+            OracleConnection login_attempt1 = new OracleConnection(connInfo);
+            OracleCommand loginCommand1 = new OracleCommand();
+            loginCommand1.Connection = login_attempt1;
+            loginCommand1.CommandText = sqlQuery1;
+            login_attempt1.Open();
+            OracleDataReader loginReader1;
+            loginReader1 = loginCommand1.ExecuteReader();
+
+            OracleDataAdapter oda1 = new OracleDataAdapter();
+            oda1.SelectCommand = new OracleCommand(sqlQuery1);
+            DataTable dt1 = new DataTable();
+            dt1.Columns.Add("음식 이름", typeof(string));
+            dt1.Columns.Add("재고량", typeof(string));
+            dt1.Columns.Add("상세정보", typeof(string));
+            while (loginReader1.Read())
+            {
+                dt1.Rows.Add(loginReader1.GetString(0), loginReader1.GetDecimal(1).ToString(), loginReader1.GetString(2));
+            }
+            login_attempt1.Close();
+            dataGridView1.DataSource = dt1;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            string sqlQuery1 = "SELECT * FROM REQUEST_ORDER WHERE TO_DATE(EXP_DATE,'RRRR-MM-DD')-TO_DATE(SYSDATE,'RRRR-MM-DD')<=7";
+            OracleConnection login_attempt1 = new OracleConnection(connInfo);
+            OracleCommand loginCommand1 = new OracleCommand();
+            loginCommand1.Connection = login_attempt1;
+            loginCommand1.CommandText = sqlQuery1;
+            login_attempt1.Open();
+            OracleDataReader loginReader;
+            loginReader = loginCommand1.ExecuteReader();
+
+            OracleDataAdapter oda1 = new OracleDataAdapter();
+            oda1.SelectCommand = new OracleCommand(sqlQuery1);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("음식 이름", typeof(string));
+            dt.Columns.Add("공급업체 이름", typeof(string));
+            dt.Columns.Add("입고일", typeof(string));
+            dt.Columns.Add("가격", typeof(string));
+            dt.Columns.Add("주문량", typeof(string));
+            dt.Columns.Add("유통기한", typeof(string));
+            while (loginReader.Read())
+            {
+                dt.Rows.Add(loginReader.GetString(0), loginReader.GetString(1), loginReader.GetDateTime(2), loginReader.GetDecimal(3).ToString(), loginReader.GetDecimal(4).ToString(), loginReader.GetDateTime(5));
+
+            }
+            login_attempt1.Close();
+            dataGridView1.DataSource = dt;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            string sqlQuery = "SELECT * FROM REQUEST_ORDER";
+            OracleConnection login_attempt = new OracleConnection(connInfo);
+            OracleCommand loginCommand = new OracleCommand();
+            loginCommand.Connection = login_attempt;
+            loginCommand.CommandText = sqlQuery;
+            login_attempt.Open();
+            OracleDataReader loginReader;
+            loginReader = loginCommand.ExecuteReader();
+
+            OracleDataAdapter oda = new OracleDataAdapter();
+            oda.SelectCommand = new OracleCommand(sqlQuery);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("음식 이름", typeof(string));
+            dt.Columns.Add("공급업체 이름", typeof(string));
+            dt.Columns.Add("입고일", typeof(string));
+            dt.Columns.Add("가격", typeof(string));
+            dt.Columns.Add("주문량", typeof(string));
+            dt.Columns.Add("유통기한", typeof(string));
+            while (loginReader.Read())
+            {
+                dt.Rows.Add(loginReader.GetString(0), loginReader.GetString(1), loginReader.GetDateTime(2), loginReader.GetDecimal(3).ToString(), loginReader.GetDecimal(4).ToString(), loginReader.GetDateTime(5));
+
+            }
+            login_attempt.Close();
+            dataGridView1.DataSource = dt;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
     }
 }
