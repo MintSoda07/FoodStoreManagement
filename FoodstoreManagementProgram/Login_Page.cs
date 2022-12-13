@@ -88,9 +88,10 @@ namespace FoodstoreManagementProgram
             //결과값이 없으면 NULL, 로그인 실패
             //결과값이 반환되면 로그인 성공
         }
-
+        corona cr = new corona();
         private void Login_Page_Load(object sender, EventArgs e)
         {
+            cr.Show();
         }
 
         private void Login_Page_KeyDown(object sender, KeyEventArgs e)
@@ -105,6 +106,10 @@ namespace FoodstoreManagementProgram
         {
             textBox1.Focus();
             timer1.Enabled = false;
+        }
+
+        private void Login_Page_FormClosing(object sender, FormClosingEventArgs e)
+        {
         }
     }
 }

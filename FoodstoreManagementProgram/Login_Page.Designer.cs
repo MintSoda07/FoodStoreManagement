@@ -119,6 +119,7 @@ namespace FoodstoreManagementProgram
             this.Name = "Login_Page";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "로그인";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_Page_FormClosing);
             this.Load += new System.EventHandler(this.Login_Page_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Login_Page_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

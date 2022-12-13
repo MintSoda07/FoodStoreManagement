@@ -61,22 +61,15 @@ namespace FoodstoreManagementProgram
             }
             catch(Exception himdurua)
             {
-
+                label2.Text = "푸드스토어";
+                label3.Text = "관리자";
             }
-
-            if (Program.ownerLogin == false)
+            if (label3.Text != "관리자")
             {
-                linkLabel1.Enabled = false;
-                linkLabel1.Text = "사용자";
-                button2.Enabled = false;
                 button3.Enabled = false;
                 button4.Enabled = false;
-                label3.Text = "아르바이트"; // 직급
-                label2.Text = "도미노"; // 이름
-            }
-            else
-            {
-                label3.Text = "관리자"; 
+                button2.Enabled = false;
+                linkLabel1.Visible = false;
             }
         }
 
