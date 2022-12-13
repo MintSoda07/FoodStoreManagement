@@ -13,9 +13,11 @@ namespace FoodstoreManagementProgram
 {
     public partial class recipe_add : Form
     {
-        public recipe_add()
+        public recipe Parent_Page;
+        public recipe_add(recipe Form2)
         {
             InitializeComponent();
+            Parent_Page = Form2;
         }
 
         private void recipe_add_Load(object sender, EventArgs e)
@@ -33,7 +35,7 @@ namespace FoodstoreManagementProgram
             try
             {
                 String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
-                string sqlQuery = "INSERT INTO RECIPE VALUES('" + textBox4.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox4.Text + "')";
+                string sqlQuery = "INSERT INTO MENU VALUES('" + textBox4.Text + "','" + Int32.Parse(textBox3.Text) + "','" + textBox5.Text + "','" + textBox6.Text + "','" + textBox2.Text + "','" + textBox1.Text + "')";
 
                 OracleConnection login_attempt = new OracleConnection(connInfo);
                 OracleCommand loginCommand = new OracleCommand();
@@ -44,6 +46,10 @@ namespace FoodstoreManagementProgram
                 login_attempt.Close();
                 MessageBox.Show("메뉴를 추가했습니다");
                 this.Close();
+                Parent_Page.Close();
+                recipe mp = new recipe();
+                mp.Tag = this;
+                mp.Show();
 
             }
             catch(Exception e11)

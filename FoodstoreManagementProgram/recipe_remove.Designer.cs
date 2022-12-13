@@ -36,6 +36,8 @@ namespace FoodstoreManagementProgram
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // button4
@@ -64,14 +66,16 @@ namespace FoodstoreManagementProgram
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(766, 286);
+            this.listView1.Size = new System.Drawing.Size(776, 286);
             this.listView1.TabIndex = 26;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -83,18 +87,28 @@ namespace FoodstoreManagementProgram
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "재료";
+            this.columnHeader2.Text = "가격";
             this.columnHeader2.Width = 65;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "순서";
+            this.columnHeader3.Text = "재료";
             this.columnHeader3.Width = 170;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "주의사항";
-            this.columnHeader4.Width = 403;
+            this.columnHeader4.Text = "시간";
+            this.columnHeader4.Width = 61;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "설명";
+            this.columnHeader5.Width = 112;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "순서";
+            this.columnHeader6.Width = 247;
             // 
             // recipe_remove
             // 
@@ -119,5 +133,7 @@ namespace FoodstoreManagementProgram
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }

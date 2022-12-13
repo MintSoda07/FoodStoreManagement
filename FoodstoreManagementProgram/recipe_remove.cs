@@ -13,9 +13,11 @@ namespace FoodstoreManagementProgram
 {
     public partial class recipe_remove : Form
     {
-        public recipe_remove()
+        public recipe Parent_Page;
+        public recipe_remove(recipe Form2)
         {
             InitializeComponent();
+            Parent_Page = Form2;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,7 +36,7 @@ namespace FoodstoreManagementProgram
             {
                 String data = listView1.SelectedItems[0].Text;
                 String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
-                string sqlQuery = "DELETE FROM RECIPE WHERE MENU_NAME='" + data + "'";
+                string sqlQuery = "DELETE FROM MENU WHERE MENU_NAME='" + data + "'";
                 OracleConnection login_attempt = new OracleConnection(connInfo);
                 OracleCommand loginCommand = new OracleCommand();
                 loginCommand.Connection = login_attempt;
@@ -56,6 +58,10 @@ namespace FoodstoreManagementProgram
 
                 }
                 login_attempt.Close();
+                Parent_Page.Close();
+                recipe mp = new recipe();
+                mp.Tag = this;
+                mp.Show();
             }
             
         }
@@ -63,7 +69,7 @@ namespace FoodstoreManagementProgram
         private void recipe_remove_Load(object sender, EventArgs e)
         {
             String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
-            string sqlQuery = "SELECT * FROM RECIPE";
+            string sqlQuery = "SELECT * FROM MENU";
 
             OracleConnection login_attempt = new OracleConnection(connInfo);
             OracleCommand loginCommand = new OracleCommand();
@@ -80,9 +86,11 @@ namespace FoodstoreManagementProgram
             {
                 ListViewItem li = new ListViewItem();
                 li.Text = loginReader.GetString(0);
-                li.SubItems.Add(loginReader.GetString(1));
+                li.SubItems.Add(loginReader.GetDecimal(1).ToString());
                 li.SubItems.Add(loginReader.GetString(2));
                 li.SubItems.Add(loginReader.GetString(3));
+                li.SubItems.Add(loginReader.GetString(4));
+                li.SubItems.Add(loginReader.GetString(5));
                 listView1.Items.Add(li);
             }
             login_attempt.Close();

@@ -79,6 +79,12 @@
     <Compile Include="FirstSetting.Designer.cs">
       <DependentUpon>FirstSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Request_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Request_add.Designer.cs">
+      <DependentUpon>Request_add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Food_Page.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </Compile>
     <EmbeddedResource Include="FirstSetting.resx">
       <DependentUpon>FirstSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Request_add.resx">
+      <DependentUpon>Request_add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Food_Page.resx">
       <DependentUpon>Food_Page.cs</DependentUpon>
