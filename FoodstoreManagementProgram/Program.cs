@@ -73,6 +73,7 @@ namespace FoodstoreManagementProgram
             }catch(Exception e)
             {
                 MessageBox.Show("예상치 못한 오류가 발생했습니다.");
+                throw (e);
             }
             
             

@@ -31,13 +31,13 @@ namespace FoodstoreManagementProgram
         {
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label12 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -75,6 +75,11 @@ namespace FoodstoreManagementProgram
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
+            // columnHeader4
+            // 
+            this.columnHeader4.DisplayIndex = 3;
+            this.columnHeader4.Width = 0;
+            // 
             // columnHeader1
             // 
             this.columnHeader1.DisplayIndex = 0;
@@ -92,6 +97,11 @@ namespace FoodstoreManagementProgram
             this.columnHeader3.DisplayIndex = 2;
             this.columnHeader3.Text = "가격";
             this.columnHeader3.Width = 113;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "조리 시간";
+            this.columnHeader5.Width = 148;
             // 
             // label2
             // 
@@ -113,16 +123,6 @@ namespace FoodstoreManagementProgram
             this.button1.TabIndex = 3;
             this.button1.Text = "결제";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.DisplayIndex = 3;
-            this.columnHeader4.Width = 0;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "조리 시간";
-            this.columnHeader5.Width = 148;
             // 
             // label12
             // 

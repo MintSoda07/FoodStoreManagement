@@ -89,7 +89,7 @@ namespace FoodstoreManagementProgram
             // listView2
             // 
             this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(12, 333);
+            this.listView2.Location = new System.Drawing.Point(12, 323);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(799, 302);
             this.listView2.TabIndex = 2;

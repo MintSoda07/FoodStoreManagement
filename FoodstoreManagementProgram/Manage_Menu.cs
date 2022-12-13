@@ -34,7 +34,7 @@ namespace FoodstoreManagementProgram
         private void Manage_Menu_Load(object sender, EventArgs e)
         {
             String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
-            string sqlQuery = "SELECT * FROM CLIENT WHERE WORKPLACE=" + Program.SERIAL;
+            string sqlQuery = "SELECT NAME,RANK,HIRED_DATE FROM CLIENT WHERE WORKPLACE=" + Program.SERIAL;
             
             OracleConnection login_attempt = new OracleConnection(connInfo);
             OracleCommand loginCommand = new OracleCommand();
@@ -49,16 +49,9 @@ namespace FoodstoreManagementProgram
             dt.Columns.Add("성명", typeof(string));
             dt.Columns.Add("직급", typeof(string));
             dt.Columns.Add("입사일", typeof(string));
-            dt.Columns.Add("직원코드", typeof(string));
-            dt.Columns.Add("나이", typeof(string));
-            dt.Columns.Add("생년월일", typeof(string));
-            dt.Columns.Add("성별", typeof(string));
-            dt.Columns.Add("급여", typeof(string));
-            dt.Columns.Add("상세정보", typeof(string));
-            dt.Columns.Add("사진 경로", typeof(string));
             while (loginReader.Read())
             {
-                dt.Rows.Add(loginReader.GetString(1), loginReader.GetString(2), loginReader.GetDateTime(3), loginReader.GetInt64(0),loginReader.GetInt64(4), loginReader.GetDateTime(5), loginReader.GetString(6), loginReader.GetInt64(7), loginReader.GetString(8));
+                dt.Rows.Add(loginReader.GetString(0), loginReader.GetString(1), loginReader.GetDateTime(2));
             }
             login_attempt.Close();
             dataGridView1.DataSource = dt;
@@ -67,7 +60,33 @@ namespace FoodstoreManagementProgram
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            String data = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
+            string sqlQuery = "SELECT * FROM CLIENT WHERE NAME='"+data+"'";
+            OracleConnection login_attempt = new OracleConnection(connInfo);
+            OracleCommand loginCommand = new OracleCommand();
+            loginCommand.Connection = login_attempt;
+            loginCommand.CommandText = sqlQuery; login_attempt.Open();
+            OracleDataReader loginReader;
+            loginReader = loginCommand.ExecuteReader();
+            while (loginReader.Read())
+            {
+                label1.Text = loginReader.GetString(1);
+                label3.Text = loginReader.GetString(2);
+                label2.Text = loginReader.GetDateTime(3).ToString("yyyy년 MM월 dd일");
+                label10.Text = (int)loginReader.GetDecimal(4)+"";
+                label11.Text = loginReader.GetDateTime(5).ToString("yyyy년 MM월 dd일");
+                label12.Text = loginReader.GetString(6);
+                label13.Text = (int)loginReader.GetDecimal(7) + "원";
+                textBox1.Text = loginReader.GetString(8);
+            }
+            login_attempt.Close();
+        }
 
+        private void 직원추가ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Manage_add MA = new Manage_add(this);
+            MA.ShowDialog();
         }
     }
 }

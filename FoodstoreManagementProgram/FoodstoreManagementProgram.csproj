@@ -85,6 +85,12 @@
     <Compile Include="Food_Page.Designer.cs">
       <DependentUpon>Food_Page.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manage_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage_add.Designer.cs">
+      <DependentUpon>Manage_add.cs</DependentUpon>
+    </Compile>
     <Compile Include="order_addPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Food_Page.resx">
       <DependentUpon>Food_Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage_add.resx">
+      <DependentUpon>Manage_add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="order_addPage.resx">
       <DependentUpon>order_addPage.cs</DependentUpon>
