@@ -51,7 +51,8 @@ namespace FoodstoreManagementProgram
                         newRow["USER_PWD"] = textBox4.Text;
                         newRow["ACESS_LEVEL"] = "ADMIN";
                         newRow["WCODE"] = Program.SERIAL;
-                        
+                        newRow["CLIENT_CODE"] = "10000000";
+
 
                         string sqlQuery2 = "UPDATE FOODSTORE SET STORE_NAME='"+textBox5.Text+"' WHERE STORE_CODE='"+Program.SERIAL+"'";
                         OracleConnection sql_conn = new OracleConnection(connInfo);
