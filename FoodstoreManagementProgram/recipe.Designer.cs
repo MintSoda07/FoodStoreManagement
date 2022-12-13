@@ -43,7 +43,10 @@ namespace FoodstoreManagementProgram
             this.button4 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,8 +72,9 @@ namespace FoodstoreManagementProgram
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(378, 485);
+            this.dataGridView1.Size = new System.Drawing.Size(378, 534);
             this.dataGridView1.TabIndex = 22;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // label9
             // 
@@ -95,7 +99,7 @@ namespace FoodstoreManagementProgram
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("휴먼모음T", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(409, 129);
+            this.label2.Location = new System.Drawing.Point(408, 172);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 21);
             this.label2.TabIndex = 25;
@@ -104,15 +108,15 @@ namespace FoodstoreManagementProgram
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("휴먼모음T", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(409, 355);
+            this.label7.Location = new System.Drawing.Point(416, 402);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(241, 21);
             this.label7.TabIndex = 26;
-            this.label7.Text = "주의사항";
+            this.label7.Text = "순   서 :";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(410, 379);
+            this.textBox1.Location = new System.Drawing.Point(417, 426);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -122,24 +126,24 @@ namespace FoodstoreManagementProgram
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("휴먼모음T", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(409, 174);
+            this.label3.Location = new System.Drawing.Point(413, 261);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 21);
             this.label3.TabIndex = 28;
-            this.label3.Text = "순   서 :";
+            this.label3.Text = "설   명 :";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(413, 214);
+            this.textBox2.Location = new System.Drawing.Point(413, 295);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(511, 118);
+            this.textBox2.Size = new System.Drawing.Size(514, 92);
             this.textBox2.TabIndex = 29;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(771, 523);
+            this.button1.Location = new System.Drawing.Point(832, 572);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 32);
             this.button1.TabIndex = 30;
@@ -149,7 +153,7 @@ namespace FoodstoreManagementProgram
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(413, 523);
+            this.button2.Location = new System.Drawing.Point(474, 572);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(352, 32);
             this.button2.TabIndex = 31;
@@ -159,7 +163,7 @@ namespace FoodstoreManagementProgram
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 523);
+            this.button4.Location = new System.Drawing.Point(12, 572);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(378, 32);
             this.button4.TabIndex = 33;
@@ -181,19 +185,47 @@ namespace FoodstoreManagementProgram
             this.textBox4.Size = new System.Drawing.Size(412, 21);
             this.textBox4.TabIndex = 35;
             // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("휴먼모음T", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(409, 129);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 21);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "가   격 :";
+            // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(508, 174);
+            this.textBox5.Location = new System.Drawing.Point(509, 172);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(412, 21);
-            this.textBox5.TabIndex = 36;
+            this.textBox5.TabIndex = 37;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(508, 212);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(412, 21);
+            this.textBox6.TabIndex = 39;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("휴먼모음T", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(408, 209);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(93, 21);
+            this.label6.TabIndex = 38;
+            this.label6.Text = "시   간 :";
             // 
             // recipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 567);
+            this.ClientSize = new System.Drawing.Size(1022, 632);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.button4);
@@ -233,6 +265,9 @@ namespace FoodstoreManagementProgram
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label6;
     }
 }
