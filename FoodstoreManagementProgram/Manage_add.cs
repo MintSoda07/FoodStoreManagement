@@ -128,7 +128,7 @@ namespace FoodstoreManagementProgram
                     DateTime myDateTime = DateTime.Now;
                     String sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss");
         String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
-                    String sql_insert = "INSERT INTO CLIENT VALUES(CLIENT_NO_GENERATOR.NEXTVAL(),'"+textBox1.Text+"','"+rank+"','"+ sqlFormattedDate + "','"+sex+"','"+dateTimePicker1.Value+"','"+textBox5.Text+"','"+null+"','"+Program.SERIAL+"'";
+                    String sql_insert = "INSERT INTO CLIENT VALUES(CLIENT_NO_GENERATOR.NEXTVAL,'"+textBox1.Text+"','"+rank+"',TO_DATE('" + sqlFormattedDate + "', 'YYYY-MM-DD HH24:MI:SS'),'"+age+"',TO_DATE('" + dateTimePicker1.Value + "', 'YYYY-MM-DD HH24:MI:SS'),'" +sex+"','"+pay+"','"+textBox5.Text+"','"+null+"','"+Program.SERIAL+"')";
                     OracleConnection Order_Conn = new OracleConnection(connInfo);
                     Order_Conn.Open();
                     OracleCommand Order_Cmd = new OracleCommand();
@@ -138,7 +138,7 @@ namespace FoodstoreManagementProgram
                 }
                 catch (Exception EXEXEX)
                 {
-
+                    MessageBox.Show(EXEXEX.Message + EXEXEX.StackTrace);
                 }
             }
         }
