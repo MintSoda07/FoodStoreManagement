@@ -14,6 +14,7 @@ namespace FoodstoreManagementProgram
     {
         public static bool ownerLogin = false;
         public static String SERIAL;
+        public static string id;
         /// <summary>
         /// 해당 애플리케이션의 주 진입점입니다.
         /// </summary>

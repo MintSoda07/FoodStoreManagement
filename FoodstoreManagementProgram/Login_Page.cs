@@ -56,6 +56,7 @@ namespace FoodstoreManagementProgram
                         {
                             MessageBox.Show("[관리자] 로그인 되었습니다.", "로그인");
                             Program.ownerLogin = true;
+                            Program.id = textBox1.Text;
                             Main_Page f2 = new Main_Page();
                             f2.Tag = this;
                             f2.Show();
@@ -66,6 +67,7 @@ namespace FoodstoreManagementProgram
                         {
                             MessageBox.Show("[사용자] 로그인 되었습니다.", "로그인");
                             Program.ownerLogin = false;
+                            Program.id = textBox1.Text;
                             Main_Page f2 = new Main_Page();
                             f2.Tag = this;
                             f2.Show();

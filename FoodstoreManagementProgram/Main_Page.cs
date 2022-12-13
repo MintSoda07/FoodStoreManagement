@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.DataAccess.Client;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace FoodstoreManagementProgram
 {
     public partial class Main_Page : Form
     {
+        string path = @"C:\Users\USER\AppData\Roaming\FSM_NOTICE.json";
         public Main_Page()
         {
             InitializeComponent();
@@ -19,7 +24,46 @@ namespace FoodstoreManagementProgram
 
         private void Main_Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                string notice = "";
+                using (StreamReader file = File.OpenText(path))
+                using (JsonTextReader reader = new JsonTextReader(file))
+                {
+                    JObject json = (JObject)JToken.ReadFrom(reader);
+                    notice = (string)json["NOTICE"].ToString();
+                }
+                if (notice != null)
+                {
+                    textBox1.Text = notice;
+                }
+            }
+            catch(Exception no_json) { 
+                
+            }
+
             // 관리자와 비관리자 인터페이스 차이점
+            try
+            {
+                String connInfo = "User Id=FSM; Password=vnemtmxhdj; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.142.10)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = xe) ) );";
+                string sqlQuery = "SELECT a.NAME,a.RANK FROM CLIENT a JOIN LOGIN_DATA b ON a.CLIENT_NO=b.CLIENT_CODE where b.USER_ID='"+ Program.id + "'";
+                OracleConnection login_attempt = new OracleConnection(connInfo);
+                OracleCommand loginCommand = new OracleCommand();
+                loginCommand.Connection = login_attempt;
+                loginCommand.CommandText = sqlQuery; login_attempt.Open();
+                OracleDataReader loginReader;
+                loginReader = loginCommand.ExecuteReader();
+                while (loginReader.Read())
+                {
+                    label2.Text = loginReader.GetString(0);
+                    label3.Text = loginReader.GetString(1);
+                }
+            }
+            catch(Exception himdurua)
+            {
+
+            }
+
             if (Program.ownerLogin == false)
             {
                 linkLabel1.Enabled = false;
@@ -85,6 +129,12 @@ namespace FoodstoreManagementProgram
             rc.Tag = this;
             rc.Show();
             this.Hide();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Notice_Add na = new Notice_Add(this);
+            na.ShowDialog(this);
         }
     }
 }

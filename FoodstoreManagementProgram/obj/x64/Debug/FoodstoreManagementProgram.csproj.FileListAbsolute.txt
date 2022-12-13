@@ -49,3 +49,4 @@ C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\ob
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.csproj.AssemblyReference.cache
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.Manage_add.resources
 C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.Request_add.resources
+C:\Users\User\Documents\GitHub\FoodStoreManagement\FoodstoreManagementProgram\obj\x64\Debug\FoodstoreManagementProgram.Notice_Add.resources
