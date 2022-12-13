@@ -53,7 +53,7 @@ namespace FoodstoreManagementProgram
                         newRow["WCODE"] = Program.SERIAL;
                         
 
-                        string sqlQuery2 = "INSERT INTO FOODSTORE VALUES('" + Program.SERIAL + "','" + textBox5.Text + "')";
+                        string sqlQuery2 = "UPDATE FOODSTORE SET STORE_NAME='"+textBox5.Text+"' WHERE STORE_CODE='"+Program.SERIAL+"'";
                         OracleConnection sql_conn = new OracleConnection(connInfo);
                         OracleCommand sql_cmd = new OracleCommand();
                         sql_conn.Open();
